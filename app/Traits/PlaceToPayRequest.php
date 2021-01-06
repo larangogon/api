@@ -42,14 +42,25 @@ trait PlaceToPayRequest
 
     public function getRequestInformation(Order $order)
     {
-        $response = $this->getClient()
-            ->post('https://test.placetopay.com/redirection/api/session/' . $order->requestId, [
-            'json'=> [
-                'auth'       => $this->getAuth()
-            ]
-        ]);
-
-        return $this->response(json_decode($response->getBody()->getContents()), $order);
+        try {
+            $response = $this->getClient()
+                ->post('https://test.placetopay.com/redirection/api/session/' . $order->requestId, [
+                    'json'=> [
+                        'auth'       => $this->getAuth()
+                    ]
+                ]);
+            return $this->response(json_decode($response->getBody()->getContents()), $order);
+        } catch (\Exception $e) {
+            $response =  json_encode([
+                'status' => [
+                    'status' => Orders::FAILED,
+                    'reason' => 'FAILED',
+                    'message' => $e->getMessage(),
+                    'date' => date('c'),
+                ],
+            ], JSON_THROW_ON_ERROR);
+            return $this->response(json_decode($response), $order);
+        }
     }
 
     private function getClient(): Client

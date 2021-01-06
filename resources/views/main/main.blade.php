@@ -1,11 +1,9 @@
 @extends('layout.app')
 
 @section('content')
-    <div class="card">
-        <div class="btn-group">
-            <a href="{{ route('orders.index')}}"><button class="btn btn-outline-info btn-sm">Todas las ordenes</button></a>
-            <a href="{{ url('/')}}"><button class="btn btn-outline-dark btn-sm">Crear orden</button></a>
-        </div>
+    <div class="container mt-4 text-center">
+        <a class="btn btn-primary" href="{{ route('orders.index')}}">Todas las ordenes</a>
+        <a class="btn btn-danger" href="{{ url('/')}}">Crear orden</a>
     </div>
     <div class="row ">
         @if ($errors->any())

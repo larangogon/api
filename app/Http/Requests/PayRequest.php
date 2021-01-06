@@ -27,6 +27,8 @@ class PayRequest extends FormRequest
             'status'     => 'string',
             'reference'  => 'string',
             'amount'     => 'numeric',
+            'processUrl' => 'string',
+            'requestId'  => 'string'
         ];
     }
 }
