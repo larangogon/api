@@ -24,9 +24,9 @@ class PayRequest extends FormRequest
     public function rules()
     {
         return [
-            'status'  => 'num',
-            'ref'     => 'num',
-            'amount'  => 'num',
+            'status'     => 'string',
+            'reference'  => 'string',
+            'amount'     => 'numeric',
         ];
     }
 }
