@@ -15,4 +15,3 @@ yarn-error.log
 /public/css/
 /.idea/
 .env.testing
-.env.travis
