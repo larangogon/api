@@ -8,6 +8,8 @@ Prueba ingeniero/tecnólogo de Integraciones
      * -cd api
      * -composer install
      * -npm install
+	 * -php artisan key:generate
+	 * -npm run dev
      * -cp .env.example .env
      
  - **Create database laravel:**
